@@ -2,8 +2,9 @@ import React, { useEffect, useState, useRef } from 'react'
 import {
   Illustration,
   Ellipse,
-  Hemisphere,
   Shape,
+  Rect,
+  Box,
   useRender,
 } from 'react-zdog'
 import { a, useSpring } from '@react-spring/zdog'
@@ -29,7 +30,8 @@ function Ring(props) {
   return (
     <Shape ref={ref} stroke={0} color="#747B9E">
       <a.Anchor rotate={rotation.interpolate(r => ({ x: TAU / 18 + -r / 4 }))}>
-        <Ellipse diameter={props.diameter} translateZ={40} stroke={2} color="#61DAFB" />
+        <Rect width={50} height={50} stroke={1} color="#fff"/>
+        {/* <Ellipse diameter={props.diameter} translateZ={40} stroke={2} color="#61DAFB" /> */}
       </a.Anchor>
     </Shape>
   )
@@ -41,7 +43,20 @@ const App = () => {
       <Ring speed={0.03} diameter={80}/>
       <Ring speed={0.04} diameter={70}/>
       <Ring speed={0.07} diameter={60}/>
-      <Hemisphere diameter={5} color="#fff" backface="#000" stroke={false} />
+      <Box 
+      rotate={{y: 10, x: 10}}
+      stroke={false}  
+      width={5} 
+      height={5} 
+      depth={5} 
+      color="#3F3F3F" 
+      topFace="#5e5e5e" 
+      rightFace="#494949" 
+      leftFace="#636363" 
+      frontFace="#9E9E9E" 
+      bottomFace="#7A7A7A"
+       />
+      {/* <Shape diameter={5} color="#fff" stroke={5} /> */}
     </Illustration>
   )
 }
